@@ -1,6 +1,7 @@
 {
-  "name": "personal-website",
+  "name": "kyle-wiskel-dev",
   "version": "0.1.0",
+  "description": "My personal website",
   "private": true,
   "scripts": {
     "dev": "next dev",
