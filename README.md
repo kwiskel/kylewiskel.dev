@@ -1,8 +1,17 @@
 ## Overview
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+This is a [Next.js](https://nextjs.org/) project
 Personal website for [Kyle Wiskel](https://kylewiskel.dev).
+
+### Folder Structure
+
+The project is organized as follows:
+
+- `/node_modules`: Contains all the dependencies of the project.
+- `/public`: Contains all the static files of the project.
+- `/app`: Contains all the routes, components, and logic of the project.
+  - `/ui`: Contains all the components of the project.
+  - `/lib`: Contains all the utility functions of the project.
 
 ## Development Setup
 
@@ -41,3 +50,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Deployment
+
+This project is deployed on [Netlify](https://netlify.com/). The deployment is triggered automatically when changes are pushed to the `main` branch.
