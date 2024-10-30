@@ -1,6 +1,6 @@
 ## Overview
 
-Persona website for [Kyle Wiskel](https://kylewiskel.dev)
+Personal website for [Kyle Wiskel](https://kylewiskel.dev)
 
 ### Folder Structure
 
