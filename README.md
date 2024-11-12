@@ -2,6 +2,13 @@
 
 Personal website for [Kyle Wiskel](https://kylewiskel.dev)
 
+### Tech Stack
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Material UI](https://mui.com/)
+
 ### Folder Structure
 
 This is a [Next.js](https://nextjs.org/) project which is organized as follows:
