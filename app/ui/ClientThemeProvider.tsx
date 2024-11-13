@@ -1,17 +1,8 @@
 'use client';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { darkTheme, lightTheme } from '@/lib/theme';
+import { ThemeProvider } from '@mui/material/styles';
 import { useState, ReactNode, createContext } from 'react';
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-  },
-});
-const lightTheme = createTheme({
-  palette: {
-    mode: 'light',
-  },
-});
 
 export const ThemeContext = createContext({
   isDarkMode: true,
