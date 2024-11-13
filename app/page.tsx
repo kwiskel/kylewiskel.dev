@@ -1,6 +1,6 @@
 'use client';
 import { Box, Typography, useTheme } from '@mui/material';
-import NavBar from './ui/NavBar';
+import NavigationBar from './ui/NavigationBar';
 
 export default function Page() {
   const theme = useTheme();
@@ -12,7 +12,7 @@ export default function Page() {
         height: '100vh',
       }}
     >
-      <NavBar />
+      <NavigationBar />
       <Box
         sx={{
           display: 'flex',

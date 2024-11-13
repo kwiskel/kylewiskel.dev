@@ -4,7 +4,7 @@ import { Box, Button, IconButton, Toolbar, useTheme } from '@mui/material';
 import { useContext } from 'react';
 import { ThemeContext } from './ClientThemeProvider';
 
-export default function NavBar() {
+export default function NavigationBar() {
   const theme = useTheme();
   const { isDarkMode, changeMode } = useContext(ThemeContext); // Access the theme state and function
 
