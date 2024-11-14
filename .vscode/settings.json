@@ -1,5 +1,5 @@
 {
-  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.formatOnType": false, // required
   "editor.formatOnPaste": true, // optional
   "editor.formatOnSave": true, // optional
@@ -7,8 +7,10 @@
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
   "files.autoSave": "onFocusChange", // optional but recommended
-  "vs-code-prettier-eslint.prettierLast": false, // set as "true" to run 'prettier' last not first
   "[typescriptreact]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   }
 }
