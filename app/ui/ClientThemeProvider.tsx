@@ -3,7 +3,6 @@ import { darkTheme, lightTheme } from '@/lib/theme';
 import { ThemeProvider } from '@mui/material/styles';
 import { useState, ReactNode, createContext } from 'react';
 
-
 export const ThemeContext = createContext({
   isDarkMode: true,
   changeMode: () => {},
