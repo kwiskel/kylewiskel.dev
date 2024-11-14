@@ -3,6 +3,7 @@ import { DarkMode, LightMode } from '@mui/icons-material';
 import { Box, Button, IconButton, Toolbar, useTheme } from '@mui/material';
 import { useContext } from 'react';
 import { ThemeContext } from './ClientThemeProvider';
+import Link from 'next/link';
 
 export default function NavigationBar() {
   const theme = useTheme();
@@ -20,7 +21,13 @@ export default function NavigationBar() {
         <Button sx={{ color: 'text.primary', '&:hover': { color: 'primary.main', background: 'inherit' } }}>
           Contact
         </Button>
-        <Button sx={{ color: 'text.primary', '&:hover': { color: 'primary.main', background: 'inherit' } }}>
+       <Button
+          component={Link}
+          href="https://kylewiskel.s3.us-east-2.amazonaws.com/KyleWiskel_Resume.pdf"
+          rel="noopener noreferrer"
+          target="_blank"
+          sx={{ color: 'text.primary', '&:hover': { color: 'primary.main', background: 'inherit' } }}
+        >
           Resume
         </Button>
       </Box>
