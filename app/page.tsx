@@ -2,6 +2,7 @@
 import { Box, useTheme } from '@mui/material';
 import NavigationBar from './ui/NavigationBar';
 import TitleSection from './ui/TitleSection';
+import ContactSection from './ui/ContactSection';
 
 export default function Page() {
   const theme = useTheme();
@@ -14,11 +15,12 @@ export default function Page() {
             ? 'radial-gradient(circle, #ffffff26 1px, transparent 1px)'
             : 'radial-gradient(circle, #12121226 1px, transparent 1px)',
         backgroundSize: '40px 40px' /* Adjust for dot spacing */,
-        height: '100vh',
+        height: 'fit-content',
       }}
     >
       <NavigationBar />
       <TitleSection />
+      <ContactSection />
     </Box>
   );
 }
