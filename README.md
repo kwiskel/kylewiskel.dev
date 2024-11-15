@@ -28,11 +28,10 @@ This is a [Next.js](https://nextjs.org/) project which is organized as follows:
 ### Helpful VSCode Extensions
 
 - ESLint
-- Prettier ESLint
+- Prettier
 - Github Copilot
 - Github Copilot Chat
 - Code Spell Checker
-- AWS Toolkit
 - Markdown All in One
 - Path Intellisense
 
