@@ -1,7 +1,9 @@
 import { Email, GitHub, LinkedIn } from '@mui/icons-material';
-import { Box, IconButton, Typography } from '@mui/material';
+import { Box, IconButton, Typography, useTheme } from '@mui/material';
 
 export default function ContactSection() {
+  const theme = useTheme();
+
   return (
     <Box display='flex' flexDirection='column' alignContent='center'>
       <Box display='flex' justifyContent='center'>
@@ -11,7 +13,6 @@ export default function ContactSection() {
             padding: '0.5em',
             '&:hover': {
               background: 'inherit',
-              color: 'primary.main',
             },
           }}
           href='https://github.com/kwiskel'
@@ -27,7 +28,6 @@ export default function ContactSection() {
             padding: '0.5em',
             '&:hover': {
               background: 'inherit',
-              color: 'primary.main',
             },
           }}
           href='https://www.linkedin.com/in/kylewiskel/'
@@ -35,7 +35,10 @@ export default function ContactSection() {
           target='_blank'
           aria-label='LinkedIn'
         >
-          <LinkedIn fontSize='inherit' />
+          <LinkedIn
+            fontSize='inherit'
+            // sx={{ color: (theme) => (theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, .9)' : '#0a66c2') }}
+          />
         </IconButton>
         <IconButton
           sx={{
@@ -43,7 +46,6 @@ export default function ContactSection() {
             padding: '0.5em',
             '&:hover': {
               background: 'inherit',
-              color: 'primary.main',
             },
           }}
           href='mailto:kwiskel@gmail.com'
@@ -62,7 +64,6 @@ export default function ContactSection() {
           margin: '25px 0px 50px 0px',
           alignSelf: 'center',
           '&:hover': {
-            color: 'primary.main',
             cursor: 'pointer',
           },
         }}
