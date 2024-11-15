@@ -1,5 +1,5 @@
 import { playfairDisplay } from '@/lib/theme';
-import { Cake, DirectionsRun, Pets, SportsHockey, Work } from '@mui/icons-material';
+import { Cake, DirectionsRun, Pets, SportsHockey } from '@mui/icons-material';
 import { Box, styled, Typography } from '@mui/material';
 import Image from 'next/image';
 
