@@ -21,7 +21,7 @@ export default function ClientThemeProvider({
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, changeMode }}>
-      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>{children}</ThemeProvider>;
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   );
 }
