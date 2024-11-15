@@ -26,7 +26,7 @@ export default function NavigationBar() {
 
   return (
     <Toolbar>
-      <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '1em' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '25px' }}>
         <Box
           sx={{
             display: 'flex',
