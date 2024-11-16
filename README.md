@@ -20,7 +20,6 @@ This is a [Next.js](https://nextjs.org/) project which is organized as follows:
   - `/lib`: Contains all the utility functions of the project.
   - `layout.tsx`: Defines the root layout of the project (can include shared components like header and footer).
   - `page.tsx`: The main page of the project.
-  - `page.module.css`: The styles for the main page.
   - `global.css`: The global styles for the project.
 
 ## Development Setup
