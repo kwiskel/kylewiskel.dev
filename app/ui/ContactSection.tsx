@@ -9,7 +9,7 @@ export default function ContactSection() {
       <Box display='flex' justifyContent='center'>
         <IconButton
           sx={{
-            fontSize: '5em',
+            fontSize: '3em',
             padding: '0.5em',
             '&:hover': {
               background: 'inherit',
@@ -24,7 +24,7 @@ export default function ContactSection() {
         </IconButton>
         <IconButton
           sx={{
-            fontSize: '5em',
+            fontSize: '3em',
             padding: '0.5em',
             '&:hover': {
               background: 'inherit',
@@ -42,7 +42,7 @@ export default function ContactSection() {
         </IconButton>
         <IconButton
           sx={{
-            fontSize: '5em',
+            fontSize: '3em',
             padding: '0.5em',
             '&:hover': {
               background: 'inherit',
