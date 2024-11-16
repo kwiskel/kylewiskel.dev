@@ -2,6 +2,7 @@
 import { Box, useTheme } from '@mui/material';
 import NavigationBar from './ui/NavigationBar';
 import TitleSection from './ui/TitleSection';
+import ProjectsSection from './ui/ProjectsSection';
 import ContactSection from './ui/ContactSection';
 
 export default function Page() {
@@ -20,6 +21,7 @@ export default function Page() {
     >
       <NavigationBar />
       <TitleSection />
+      <ProjectsSection />
       <ContactSection />
     </Box>
   );
