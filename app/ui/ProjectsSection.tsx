@@ -3,6 +3,7 @@ import { playfairDisplay } from '@/lib/theme';
 import ProjectCard from './ProjectCard';
 import portfolioMockupDarkMode from '../../public/projects/portfolio-mockup-darkmode.png';
 import portfolioMockupLightMode from '../../public/projects/portfolio-mockup-lightmode.png';
+import mealrMockup from '../../public/projects/mealr-mockup.png';
 
 export default function ProjectsSection() {
   const theme = useTheme();
@@ -32,6 +33,15 @@ export default function ProjectsSection() {
         technologies={['Next.js', 'React', 'TypeScript', 'Material UI', 'CSS']}
         githubLink='https://github.com/kwiskel/kylewiskel.dev'
         projectLink='https://kylewiskel.dev'
+      />
+      <ProjectCard
+        name='Mealr'
+        description='Android App that lets users track ingredients, recipes, meals, and shopping lists.. 
+        Created with a group of 6 students in my CMPUT 301 lab, as part of my BSc in Computer Engineering'
+        image={mealrMockup}
+        technologies={['Android Studio', 'Java', 'Firebase']}
+        githubLink='https://github.com/CMPUT301F22T12/Mealr'
+        reverse={true}
       />
     </Box>
   );

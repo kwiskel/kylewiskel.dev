@@ -42,6 +42,8 @@ const techIcons: Record<string, Record<string, string>> = {
     light: '/icons/firebase-lightmode.svg',
     url: 'https://firebase.google.com/',
   },
+  'Android Studio': { src: '/icons/android-studio.svg', url: 'https://developer.android.com/studio' },
+  Java: { src: '/icons/java.svg', url: 'https://www.java.com/' },
 };
 
 export default function ProjectCard({
@@ -50,7 +52,7 @@ export default function ProjectCard({
   image,
   technologies,
   githubLink,
-  projectLink,
+  projectLink = undefined,
   reverse = false,
 }: ProjectCardProps) {
   const theme = useTheme();
@@ -58,7 +60,7 @@ export default function ProjectCard({
     <Box // Project Card
       sx={{
         display: 'flex',
-        margin: reverse ? '0px' : '0px 0px 0px 5%',
+        margin: reverse ? '0px 0px 200px 0px' : '0px 0px 200px 5%',
         height: 'fit-content',
         flexDirection: reverse ? 'row-reverse' : 'row',
       }}
@@ -69,7 +71,7 @@ export default function ProjectCard({
           flexDirection: 'column',
           justifyContent: 'center',
           alignContent: 'start',
-          width: '45%',
+          width: '50%',
           margin: reverse ? '0px 0px 0px 50px' : '0px 50px 0px 0px',
         }}
       >
@@ -100,7 +102,7 @@ export default function ProjectCard({
             <IconButton
               key={index}
               sx={{ padding: '15px' }}
-              href={techIcons[tech].url ?? null}
+              href={techIcons[tech]?.url ?? null}
               rel='noopener noreferrer'
               target='_blank'
             >
@@ -148,7 +150,7 @@ export default function ProjectCard({
           display: 'flex',
           justifyContent: 'center',
           alignContent: 'center',
-          width: '55%',
+          width: '50%',
         }}
       >
         <Image
