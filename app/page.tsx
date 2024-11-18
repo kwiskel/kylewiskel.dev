@@ -4,6 +4,7 @@ import NavigationBar from './ui/NavigationBar';
 import TitleSection from './ui/TitleSection';
 import ProjectsSection from './ui/ProjectsSection';
 import ContactSection from './ui/ContactSection';
+import WorkSection from './ui/WorkSection';
 
 export default function Page() {
   const theme = useTheme();
@@ -22,6 +23,7 @@ export default function Page() {
       <NavigationBar />
       <TitleSection />
       <ProjectsSection />
+      <WorkSection />
       <ContactSection />
     </Box>
   );

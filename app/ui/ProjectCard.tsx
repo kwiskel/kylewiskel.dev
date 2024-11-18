@@ -4,6 +4,9 @@ import Image, { StaticImageData } from 'next/image';
 
 type ProjectCardProps = {
   name: string;
+  company?: string;
+  date?: string;
+  location?: string;
   description: string;
   image: StaticImageData;
   technologies?: string[];
@@ -48,6 +51,9 @@ const techIcons: Record<string, Record<string, string>> = {
 
 export default function ProjectCard({
   name,
+  company,
+  date,
+  location,
   description,
   image,
   technologies,
@@ -60,7 +66,7 @@ export default function ProjectCard({
     <Box // Project Card
       sx={{
         display: 'flex',
-        margin: reverse ? '0px 0px 200px 0px' : '0px 0px 200px 5%',
+        margin: reverse ? '0px 0px 150px 0px' : '0px 0px 150px 5%',
         height: 'fit-content',
         flexDirection: reverse ? 'row-reverse' : 'row',
       }}

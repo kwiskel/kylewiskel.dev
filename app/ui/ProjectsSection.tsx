@@ -14,7 +14,7 @@ export default function ProjectsSection() {
         flexDirection: 'column',
         justifyContent: 'center',
         verticalAlign: 'middle',
-        margin: '20vh 50px 200px 50px',
+        margin: '20vh 50px 0px 50px',
       }}
     >
       <Typography
