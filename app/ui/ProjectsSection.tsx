@@ -1,8 +1,11 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 import { playfairDisplay } from '@/lib/theme';
 import ProjectCard from './ProjectCard';
+import portfolioMockupDarkMode from '../../public/projects/portfolio-mockup-darkmode.png';
+import portfolioMockupLightMode from '../../public/projects/portfolio-mockup-lightmode.png';
 
 export default function ProjectsSection() {
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -25,7 +28,7 @@ export default function ProjectsSection() {
         name='Portfolio Website'
         description='Personal Porfolio Website built using Next.js, React, Typescript, 
         Material UI, and CSS. This consists of my resume, a summary about me, my projects, my work experience, and my contact info.'
-        image='/projects/portfolio.png'
+        image={theme.palette.mode === 'dark' ? portfolioMockupDarkMode : portfolioMockupLightMode}
         technologies={['Next.js', 'React', 'TypeScript', 'Material UI', 'CSS']}
         githubLink='https://github.com/kwiskel/kylewiskel.dev'
         projectLink='https://kylewiskel.dev'

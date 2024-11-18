@@ -1,14 +1,15 @@
 import { playfairDisplay } from '@/lib/theme';
 import { Box, Button, IconButton, Typography, useTheme } from '@mui/material';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 type ProjectCardProps = {
   name: string;
   description: string;
-  image: string;
+  image: StaticImageData;
   technologies?: string[];
   githubLink?: string;
   projectLink?: string;
+  reverse?: boolean;
 };
 
 const techIcons: Record<string, Record<string, string>> = {
@@ -50,27 +51,29 @@ export default function ProjectCard({
   technologies,
   githubLink,
   projectLink,
+  reverse = false,
 }: ProjectCardProps) {
   const theme = useTheme();
   return (
-    <Box
+    <Box // Project Card
       sx={{
         display: 'flex',
-        margin: '0px 0px 0px 100px',
+        margin: reverse ? '0px' : '0px 0px 0px 5%',
         height: 'fit-content',
+        flexDirection: reverse ? 'row-reverse' : 'row',
       }}
     >
-      <Box
+      <Box // Name / Project Description
         sx={{
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignContent: 'start',
-          width: '50%',
-          margin: '0px 50px 0px 0px',
+          width: '45%',
+          margin: reverse ? '0px 0px 0px 50px' : '0px 50px 0px 0px',
         }}
       >
-        <Typography
+        <Typography // Project Name
           variant='h5'
           fontFamily={playfairDisplay.style.fontFamily}
           fontWeight='700'
@@ -78,15 +81,18 @@ export default function ProjectCard({
         >
           {name}
         </Typography>
-        <Typography variant='body1' sx={{ color: 'text.secondary', margin: '0px 0px 35px 0px' }}>
+        <Typography // Project Description
+          variant='body1'
+          sx={{ color: 'text.secondary', margin: '0px 0px 35px 0px' }}
+        >
           {description}
         </Typography>
-        <Box
+        <Box // Technologies
           sx={{
             display: 'flex',
-            margin: '0px 10px 0px 10px',
+            margin: '0px 2.5% 0px 2.5%',
             justifyContent: 'center',
-            width: '100%',
+            width: '95%',
             gap: '20px',
           }}
         >
@@ -107,7 +113,12 @@ export default function ProjectCard({
             </IconButton>
           ))}
         </Box>
-        <Box display='flex' sx={{ margin: '35px 0px 0px 0px' }}>
+        <Box // Links
+          display='flex'
+          sx={{
+            margin: '35px 0px 0px 0px',
+          }}
+        >
           {githubLink && (
             <Button
               variant='outlined'
@@ -132,8 +143,24 @@ export default function ProjectCard({
           )}
         </Box>
       </Box>
-      <Box>
-        <Image src={image} alt='Project Image' width={1000} height={600} />
+      <Box // Project Image
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignContent: 'center',
+          width: '55%',
+        }}
+      >
+        <Image
+          src={image}
+          alt='Project Image'
+          loading='lazy'
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
+          style={{
+            width: '100%', // Allow the image to scale to the parent container's width
+            height: 'auto', // Automatically adjusts height to maintain aspect ratio
+          }}
+        />
       </Box>
     </Box>
   );
