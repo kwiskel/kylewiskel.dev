@@ -35,10 +35,7 @@ export default function ContactSection() {
           target='_blank'
           aria-label='LinkedIn'
         >
-          <LinkedIn
-            fontSize='inherit'
-            // sx={{ color: (theme) => (theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, .9)' : '#0a66c2') }}
-          />
+          <LinkedIn fontSize='inherit' />
         </IconButton>
         <IconButton
           sx={{
