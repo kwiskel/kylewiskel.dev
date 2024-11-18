@@ -1,5 +1,5 @@
 import { playfairDisplay } from '@/lib/theme';
-import { Box, Button, IconButton, Typography } from '@mui/material';
+import { Box, Button, IconButton, Typography, useTheme } from '@mui/material';
 import Image from 'next/image';
 
 type ProjectCardProps = {
@@ -11,18 +11,36 @@ type ProjectCardProps = {
   projectLink?: string;
 };
 
-const techIcons: Record<string, string> = {
-  'Next.js': '/icons/next-js.svg',
-  React: '/icons/react.svg',
-  TypeScript: '/icons/typescript.svg',
-  JavaScript: '/icons/javascript.svg',
-  'Material UI': '/icons/materialui.svg',
-  CSS: '/icons/css.svg',
-  Django: '/icons/django.svg',
-  Node: '/icons/nodejsLight.svg',
-  WordPress: '/icons/wordpress.svg',
-  PHP: '/icons/php.svg',
-  Python: '/icons/python.svg',
+const techIcons: Record<string, Record<string, string>> = {
+  'Next.js': { dark: '/icons/next-js-darkmode.svg', light: '/icons/next-js-lightmode.svg', url: 'https://nextjs.org/' },
+  React: { src: '/icons/react.svg', url: 'https://react.dev/' },
+  TypeScript: { src: '/icons/typescript.svg', url: 'https://www.typescriptlang.org/' },
+  JavaScript: { src: '/icons/javascript.svg', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+  'Material UI': { src: '/icons/materialui.svg', url: 'https://mui.com/material-ui/' },
+  CSS: {
+    dark: '/icons/css-darkmode.svg',
+    light: '/icons/css-lightmode.svg',
+    url: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+  },
+  Django: { src: '/icons/django.svg', url: 'https://www.djangoproject.com/' },
+  'Node.js': {
+    dark: '/icons/node-js-darkmode.svg',
+    light: '/icons/node-js-lightmode.svg',
+    url: 'https://nodejs.org/en',
+  },
+  WordPress: { src: '/icons/wordpress.svg', url: 'https://wordpress.org/' },
+  PHP: { src: '/icons/php.svg', url: 'https://www.php.net/' },
+  Python: { dark: '/icons/python-darkmode.svg', light: '/icons/python-lightmode.svg', url: 'https://www.python.org/' },
+  'Amazon EC2': {
+    dark: '/icons/amazon-ec2-darkmode.svg',
+    light: '/icons/amazon-ec2-lightmode.svg',
+    url: 'https://aws.amazon.com/pm/ec2/',
+  },
+  Firebase: {
+    dark: '/icons/firebase-darkmode.svg',
+    light: '/icons/firebase-lightmode.svg',
+    url: 'https://firebase.google.com/',
+  },
 };
 
 export default function ProjectCard({
@@ -33,6 +51,7 @@ export default function ProjectCard({
   githubLink,
   projectLink,
 }: ProjectCardProps) {
+  const theme = useTheme();
   return (
     <Box
       sx={{
@@ -72,8 +91,19 @@ export default function ProjectCard({
           }}
         >
           {technologies?.map((tech, index) => (
-            <IconButton key={index} sx={{ fontSize: '3em' }}>
-              <Image src={techIcons[tech]} alt={tech} width={50} height={50} layout='intrinsic' />
+            <IconButton
+              key={index}
+              sx={{ padding: '15px' }}
+              href={techIcons[tech].url ?? null}
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              <Image
+                src={techIcons[tech][theme.palette.mode] ?? techIcons[tech]['src']}
+                alt={tech}
+                width={50}
+                height={50}
+              />
             </IconButton>
           ))}
         </Box>
@@ -103,7 +133,7 @@ export default function ProjectCard({
         </Box>
       </Box>
       <Box>
-        <Image src={image} alt='Profile Picture' width={1000} height={600} layout='intrinsic' />
+        <Image src={image} alt='Project Image' width={1000} height={600} />
       </Box>
     </Box>
   );
