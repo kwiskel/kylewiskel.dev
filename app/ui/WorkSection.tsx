@@ -2,8 +2,13 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { playfairDisplay } from '@/lib/theme';
 import ProjectCard from './ProjectCard';
 import racMockup from '../../public/work/rac-mockup.png';
+import { RefObject } from 'react';
 
-export default function WorkSection() {
+type props = {
+  ref: RefObject<HTMLDivElement>;
+};
+
+export default function WorkSection({ ref }: props) {
   return (
     <Box
       sx={{
@@ -15,6 +20,7 @@ export default function WorkSection() {
       }}
     >
       <Typography
+        ref={ref}
         variant='h3'
         fontFamily={playfairDisplay.style.fontFamily}
         fontWeight='700'

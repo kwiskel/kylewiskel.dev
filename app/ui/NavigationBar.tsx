@@ -1,10 +1,16 @@
 'use client';
 import { Article, ContactMail, DarkMode, DesignServices, LightMode, Work } from '@mui/icons-material';
 import { Box, Button, ButtonProps, IconButton, styled, Toolbar, useTheme } from '@mui/material';
-import { useContext } from 'react';
+import { RefObject, useContext } from 'react';
 import { ThemeContext } from './ClientThemeProvider';
 
-export default function NavigationBar() {
+type props = {
+  projectRef: RefObject<HTMLDivElement>;
+  workRef: RefObject<HTMLDivElement>;
+  contactRef: RefObject<HTMLDivElement>;
+};
+
+export default function NavigationBar({ projectRef, workRef, contactRef }: props) {
   const theme = useTheme();
   const { changeMode } = useContext(ThemeContext); // Access the theme state and function
 
@@ -24,6 +30,10 @@ export default function NavigationBar() {
     },
   }));
 
+  const scrollToRef = (ref: RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <Toolbar>
       <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '25px' }}>
@@ -35,9 +45,15 @@ export default function NavigationBar() {
             borderRadius: '20px',
           }}
         >
-          <NavButton startIcon={<DesignServices />}>Projects</NavButton>
-          <NavButton startIcon={<Work />}>Work Experience</NavButton>
-          <NavButton startIcon={<ContactMail />}>Contact</NavButton>
+          <NavButton startIcon={<DesignServices />} onClick={() => scrollToRef(projectRef)}>
+            Projects
+          </NavButton>
+          <NavButton startIcon={<Work />} onClick={() => scrollToRef(workRef)}>
+            Work Experience
+          </NavButton>
+          <NavButton startIcon={<ContactMail />} onClick={() => scrollToRef(contactRef)}>
+            Contact
+          </NavButton>
           <NavButton
             startIcon={<Article />}
             component='a'

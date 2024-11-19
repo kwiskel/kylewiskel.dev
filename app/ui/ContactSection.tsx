@@ -1,11 +1,13 @@
 import { Email, GitHub, LinkedIn } from '@mui/icons-material';
-import { Box, IconButton, Typography, useTheme } from '@mui/material';
+import { Box, IconButton, Typography } from '@mui/material';
+import { RefObject } from 'react';
+type props = {
+  ref: RefObject<HTMLDivElement>;
+};
 
-export default function ContactSection() {
-  const theme = useTheme();
-
+export default function ContactSection({ ref }: props) {
   return (
-    <Box display='flex' flexDirection='column' alignContent='center'>
+    <Box display='flex' flexDirection='column' alignContent='center' ref={ref}>
       <Box display='flex' justifyContent='center'>
         <IconButton
           sx={{

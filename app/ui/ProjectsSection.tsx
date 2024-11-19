@@ -4,8 +4,13 @@ import ProjectCard from './ProjectCard';
 import portfolioMockupDarkMode from '../../public/projects/portfolio-mockup-darkmode.png';
 import portfolioMockupLightMode from '../../public/projects/portfolio-mockup-lightmode.png';
 import mealrMockup from '../../public/projects/mealr-mockup.png';
+import { RefObject } from 'react';
 
-export default function ProjectsSection() {
+type props = {
+  ref: RefObject<HTMLDivElement>;
+};
+
+export default function ProjectsSection({ ref }: props) {
   const theme = useTheme();
   return (
     <Box
@@ -18,6 +23,7 @@ export default function ProjectsSection() {
       }}
     >
       <Typography
+        ref={ref}
         variant='h3'
         fontFamily={playfairDisplay.style.fontFamily}
         fontWeight='700'

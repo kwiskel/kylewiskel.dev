@@ -5,9 +5,15 @@ import TitleSection from './ui/TitleSection';
 import ProjectsSection from './ui/ProjectsSection';
 import ContactSection from './ui/ContactSection';
 import WorkSection from './ui/WorkSection';
+import { useRef } from 'react';
 
 export default function Page() {
   const theme = useTheme();
+
+  const projectRef = useRef(null);
+  const workRef = useRef(null);
+  const contactRef = useRef(null);
+
   return (
     <Box
       sx={{
@@ -20,11 +26,11 @@ export default function Page() {
         height: 'fit-content',
       }}
     >
-      <NavigationBar />
+      <NavigationBar projectRef={projectRef} workRef={workRef} contactRef={contactRef} />
       <TitleSection />
-      <ProjectsSection />
-      <WorkSection />
-      <ContactSection />
+      <ProjectsSection ref={projectRef} />
+      <WorkSection ref={workRef} />
+      <ContactSection ref={contactRef} />
     </Box>
   );
 }
