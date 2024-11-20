@@ -19,7 +19,10 @@ export default function ProjectsSection({ ref }: props) {
         flexDirection: 'column',
         justifyContent: 'center',
         verticalAlign: 'middle',
-        margin: '20vh 50px 0px 50px',
+        margin: {
+          xs: '100px 0px 0px 0px',
+          md: '100px 50px 0px 50px',
+        },
       }}
     >
       <Typography

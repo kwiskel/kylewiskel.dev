@@ -66,65 +66,96 @@ export default function ProjectCard({
     <Box // Project Card
       sx={{
         display: 'flex',
-        margin: reverse ? '0px 0px 150px 0px' : '0px 0px 150px 5%',
+        margin: {
+          xs: '0px 0px 100px 0px',
+          lg: reverse ? '0px 0px 100px 0px' : '0px 0px 100px 25px',
+        },
         height: 'fit-content',
-        flexDirection: reverse ? 'row-reverse' : 'row',
+        flexDirection: {
+          xs: 'column',
+          lg: reverse ? 'row-reverse' : 'row',
+        },
       }}
     >
-      <Box // Name / Project Description
+      <Box // Name + Project Description
         sx={{
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
           alignContent: 'start',
-          width: '50%',
-          margin: reverse ? '0px 0px 0px 50px' : '0px 50px 0px 0px',
+          maxWidth: {
+            lg: '50%',
+          },
+          margin: {
+            xs: '0px 10px 0px 10px',
+            lg: reverse ? '0px 0px 0px 50px' : '0px 50px 0px 0px',
+          },
         }}
       >
         <Typography // Project Name
           variant='h5'
           fontFamily={playfairDisplay.style.fontFamily}
           fontWeight='700'
-          sx={{ color: 'text.primary', margin: '0px 0px 20px 0px' }}
+          sx={{ color: 'text.primary', margin: '0px 0px 20px 0px', wordWrap: 'break-word' }}
         >
           {name}
         </Typography>
+        {company && (
+          <Typography //  Company
+            variant='body1'
+            sx={{ color: 'text.primary', margin: '-10px 0px 20px 0px', wordWrap: 'break-word' }}
+          >
+            {company}, {location} | {date}
+          </Typography>
+        )}
         <Typography // Project Description
           variant='body1'
-          sx={{ color: 'text.secondary', margin: '0px 0px 35px 0px' }}
+          sx={{ color: 'text.secondary', wordWrap: 'break-word' }}
         >
           {description}
         </Typography>
         <Box // Technologies
           sx={{
             display: 'flex',
-            margin: '0px 2.5% 0px 2.5%',
             justifyContent: 'center',
-            width: '95%',
-            gap: '20px',
+            maxWidth: '85vw',
+            margin: '15px 0px 0px 0px',
+            alignSelf: { xs: 'center', lg: 'start' },
           }}
         >
-          {technologies?.map((tech, index) => (
-            <IconButton
-              key={index}
-              sx={{ padding: '15px' }}
-              href={techIcons[tech]?.url ?? null}
-              rel='noopener noreferrer'
-              target='_blank'
-            >
-              <Image
-                src={techIcons[tech][theme.palette.mode] ?? techIcons[tech]['src']}
-                alt={tech}
-                width={50}
-                height={50}
-              />
-            </IconButton>
-          ))}
+          <Box
+            sx={{
+              display: 'flex',
+              gap: '20px',
+              overflowX: 'scroll',
+            }}
+          >
+            {technologies?.map((tech, index) => (
+              <IconButton
+                key={index}
+                sx={{ padding: '15px', flexShrink: 0 }}
+                href={techIcons[tech]?.url ?? null}
+                rel='noopener noreferrer'
+                target='_blank'
+              >
+                <Image
+                  src={techIcons[tech][theme.palette.mode] ?? techIcons[tech]['src']}
+                  alt={tech}
+                  width={50}
+                  height={50}
+                />
+              </IconButton>
+            ))}
+          </Box>
         </Box>
         <Box // Links
           display='flex'
           sx={{
-            margin: '35px 0px 0px 0px',
+            margin: { xs: '15px 10px 10px 0px', lg: '35px 0px 0px 0px' },
+            justifyContent: {
+              xs: 'center',
+              lg: 'left',
+            },
           }}
         >
           {githubLink && (
@@ -156,16 +187,28 @@ export default function ProjectCard({
           display: 'flex',
           justifyContent: 'center',
           alignContent: 'center',
-          width: '50%',
+          alignSelf: 'center',
+          width: {
+            xs: '100%',
+            lg: '50%',
+          },
+          margin: {
+            xs: '25px 10px 0px 10px',
+            lg: '0px 0px 0px 0px',
+          },
+          maxWidth: {
+            xs: '90vw',
+            sm: '60vw',
+          },
         }}
       >
         <Image
           src={image}
           alt='Project Image'
           loading='lazy'
-          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw'
+          sizes='(max-width: 900px) 50vw, (max-width: 1200px) 50vw, 50vw'
           style={{
-            width: '100%', // Allow the image to scale to the parent container's width
+            width: '100%',
             height: 'auto', // Automatically adjusts height to maintain aspect ratio
           }}
         />
