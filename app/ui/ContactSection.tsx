@@ -60,7 +60,7 @@ export default function ContactSection({ ref }: props) {
         sx={{
           color: 'text.secondary',
           textDecoration: 'none',
-          margin: '25px 0px 50px 0px',
+          margin: '25px 0px 0px 0px',
           alignSelf: 'center',
           '&:hover': {
             cursor: 'pointer',
