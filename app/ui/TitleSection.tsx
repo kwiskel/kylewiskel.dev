@@ -1,59 +1,94 @@
 import { playfairDisplay } from '@/lib/theme';
-import { Cake, DirectionsRun, Pets, SportsHockey } from '@mui/icons-material';
-import { Box, styled, Typography } from '@mui/material';
+import { Box, Fade, Typography } from '@mui/material';
 import Image from 'next/image';
-
-const AnimatedHeader = styled(Typography)(({ theme }) => ({
-  opacity: 0,
-  animation: 'fadeIn 2.5s ease-in forwards', // 2s duration, fade-in
-}));
+import profile from '../../public/profile.png';
 
 export default function TitleSection() {
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        verticalAlign: 'middle',
-        margin: '20vh 50px 0px 50px',
-      }}
-    >
+    <Fade in={true} timeout={4000}>
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'column',
+          flexDirection: {
+            xs: 'column',
+            lg: 'row',
+          },
+          justifyContent: 'center',
+          verticalAlign: 'middle',
           margin: {
-            xs: '0 0 0 10px',
-            sm: '0 0 0 100px',
+            xs: '200px 0px 0px 0px',
+            md: '200px 100px 0px 100px',
           },
         }}
       >
-        <AnimatedHeader
-          variant='h1'
-          fontFamily={playfairDisplay.style.fontFamily}
-          fontWeight='700'
-          sx={{ color: 'text.primary', margin: '50px 50px 0px 0px', alignSelf: 'left' }}
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: {
+              xs: '100%',
+              lg: '60%',
+            },
+            justifyContent: 'center',
+            alignSelf: 'center',
+            maxWidth: '600px',
+          }}
         >
-          Kyle Wiskel
-        </AnimatedHeader>
-        <AnimatedHeader variant='h5' sx={{ color: 'text.secondary', margin: '50px 50px 0px 0px', alignSelf: 'center' }}>
-          Hey! I&apos;m Kyle Wiskel, a Software Developer and recent Computer Engineering graduate from the University
-          of Alberta.
-          <br /> I love running <DirectionsRun />, baking <Cake />, cats <Pets />, and the Edmonton Oilers{' '}
-          <SportsHockey />!
-        </AnimatedHeader>
+          <Typography
+            fontFamily={playfairDisplay.style.fontFamily}
+            fontWeight='700'
+            sx={{
+              color: 'text.primary',
+              margin: '0px 0px 25px 0px',
+              alignSelf: {
+                xs: 'center',
+                lg: 'start',
+              },
+              fontSize: { xs: '3.5em', sm: '4em', lg: '5em' },
+            }}
+          >
+            Kyle Wiskel
+          </Typography>
+          <Typography
+            variant='body1'
+            sx={{ color: 'text.primary', alignSelf: 'center', fontWeight: '300', wordWrap: 'break-word' }}
+          >
+            Hello! I&apos;m Kyle Wiskel, a<b> Full Stack Developer</b>, a half marathon runner (Edmonton Marathon 2024),
+            an animal shelter volunteer, a baker, and a travel lover (last stops: Iceland, Hawaii). <br /> <br /> With a
+            <b> BSc in Computer Engineering</b> from the University of Alberta, I wear my iron ring as a symbol of pride
+            and a reminder to live by a high standard of professional and ethical conduct!
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            width: {
+              xs: '100%',
+              lg: '50%',
+            },
+            margin: {
+              xs: '25px 0px 0px 0px',
+              lg: '0px 0px 0px 0px',
+            },
+            justifyContent: {
+              xs: 'center',
+              lg: 'center',
+            },
+            alignItems: 'center',
+          }}
+        >
+          {/* <Image src='/profile.png' alt='Profile Picture' width={300} height={atuo} /> */}
+          <Image
+            src={profile}
+            alt='Profile Picture'
+            sizes='300px'
+            style={{
+              width: '300px',
+              height: 'auto', // Automatically adjusts height to maintain aspect ratio
+            }}
+          />
+        </Box>
       </Box>
-      <Box
-        sx={{
-          margin: {
-            xs: '0 10px 0 0',
-            sm: '0 100px 0 0',
-          },
-          display: 'flex',
-        }}
-      >
-        <Image src='/profile.png' alt='Profile Picture' width={300} height={300 * 1.225} />
-      </Box>
-    </Box>
+    </Fade>
   );
 }
