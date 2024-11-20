@@ -1,7 +1,7 @@
 'use client';
-import { Article, ContactMail, DarkMode, DesignServices, LightMode, Work } from '@mui/icons-material';
-import { Box, Button, ButtonProps, IconButton, styled, Toolbar, useTheme } from '@mui/material';
-import { RefObject, useContext } from 'react';
+import { Article, ContactMail, DarkMode, DesignServices, LightMode, Menu, Work } from '@mui/icons-material';
+import { Box, Button, ButtonProps, IconButton, styled, Toolbar, useRadioGroup, useTheme } from '@mui/material';
+import { RefObject, useContext, useEffect, useRef, useState } from 'react';
 import { ThemeContext } from './ClientThemeProvider';
 
 type props = {
@@ -13,6 +13,7 @@ type props = {
 export default function NavigationBar({ projectRef, workRef, contactRef }: props) {
   const theme = useTheme();
   const { changeMode } = useContext(ThemeContext); // Access the theme state and function
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   type NavButtonProps = ButtonProps & {
     target?: string;
@@ -30,19 +31,54 @@ export default function NavigationBar({ projectRef, workRef, contactRef }: props
     },
   }));
 
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const [mobileNavPosition, setMobileNavPosition] = useState(200);
+  useEffect(() => {
+    if (menuButtonRef.current) {
+      setMobileNavPosition(menuButtonRef.current.getBoundingClientRect().bottom);
+    }
+  }, [menuButtonRef.current]);
+
   const scrollToRef = (ref: RefObject<HTMLDivElement>) => {
+    // if mobile -> close bar
+    if (mobileOpen) setMobileOpen(false);
     ref.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <Toolbar>
-      <Box sx={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '25px' }}>
+    <Toolbar
+      sx={{
+        width: '100%',
+        display: 'flex',
+        flexDirection: { xs: 'column', md: 'row' },
+      }}
+    >
+      <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', justifyContent: 'space-between' }}>
+        <IconButton ref={menuButtonRef} color='inherit' edge='start' onClick={() => setMobileOpen(!mobileOpen)}>
+          <Menu />
+        </IconButton>
+        <IconButton onClick={() => changeMode()} sx={{ display: { xs: 'inherit', md: 'none' } }}>
+          {theme.palette.mode === 'dark' ? <LightMode /> : <DarkMode />}
+        </IconButton>
+      </Box>
+      <Box
+        sx={{
+          display: { xs: mobileOpen ? 'flex' : 'none', md: 'flex' },
+          position: { xs: 'fixed', md: 'inherit' }, // Use 'fixed' to overlay the box on mobile
+          top: { xs: mobileNavPosition, md: null },
+          left: { xs: 0, md: null },
+          transition: 'opacity 0.5s ease',
+          width: { xs: 'fit-content', md: '100%' },
+          justifyContent: 'center',
+        }}
+      >
         <Box
           sx={{
             display: 'flex',
-            border: `1px solid ${theme.palette.text.primary}`,
+            border: mobileOpen ? 'none' : `1px solid ${theme.palette.text.primary}`,
             width: 'fit-content',
             borderRadius: '20px',
+            flexDirection: { xs: 'column', md: 'row' },
           }}
         >
           <NavButton startIcon={<DesignServices />} onClick={() => scrollToRef(projectRef)}>
@@ -66,7 +102,7 @@ export default function NavigationBar({ projectRef, workRef, contactRef }: props
           </NavButton>
         </Box>
       </Box>
-      <IconButton onClick={() => changeMode()}>
+      <IconButton onClick={() => changeMode()} sx={{ display: { xs: 'none', md: 'inherit' } }}>
         {theme.palette.mode === 'dark' ? <LightMode /> : <DarkMode />}
       </IconButton>
     </Toolbar>
