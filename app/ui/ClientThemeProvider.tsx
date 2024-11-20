@@ -13,7 +13,8 @@ export default function ClientThemeProvider({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const theme = isDarkMode ? darkTheme : lightTheme;
 
   const changeMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -21,7 +22,20 @@ export default function ClientThemeProvider({
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, changeMode }}>
-      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <body
+          style={{
+            backgroundColor: theme.palette.background.default,
+            backgroundImage:
+              theme.palette.mode === 'dark'
+                ? 'radial-gradient(circle, #ffffff26 1px, transparent 1px)'
+                : 'radial-gradient(circle, #12121226 1px, transparent 1px)',
+            backgroundSize: '40px 40px' /* Adjust for dot spacing */,
+          }}
+        >
+          {children}
+        </body>
+      </ThemeProvider>
     </ThemeContext.Provider>
   );
 }
