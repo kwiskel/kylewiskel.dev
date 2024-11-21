@@ -1,40 +1,52 @@
-import { playfairDisplay } from '@/lib/theme';
 import { Box, Fade, Typography } from '@mui/material';
 import Image from 'next/image';
 import profile from '../../public/profile.png';
+import AnimatedName from './AnimatedName';
+import { useState } from 'react';
 
 export default function TitleSection() {
+  const [fadeIn, setFadeIn] = useState(false);
+
   return (
-    <Fade in={true} timeout={4000}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: {
+          xs: 'column',
+          lg: 'row',
+        },
+        justifyContent: 'center',
+        verticalAlign: 'middle',
+        margin: {
+          xs: '100px 0px 0px 0px',
+          md: '200px 100px 0px 100px',
+        },
+      }}
+    >
       <Box
         sx={{
           display: 'flex',
-          flexDirection: {
-            xs: 'column',
-            lg: 'row',
+          flexDirection: 'column',
+          width: {
+            xs: '100%',
+            lg: '60%',
           },
           justifyContent: 'center',
-          verticalAlign: 'middle',
-          margin: {
-            xs: '200px 0px 0px 0px',
-            md: '200px 100px 0px 100px',
-          },
+          alignSelf: 'center',
+          maxWidth: '600px',
         }}
       >
         <Box
           sx={{
             display: 'flex',
-            flexDirection: 'column',
-            width: {
-              xs: '100%',
-              lg: '60%',
+            padding: '0px 0px 25px 0px',
+            alignContent: {
+              xs: 'center',
+              lg: 'start',
             },
-            justifyContent: 'center',
-            alignSelf: 'center',
-            maxWidth: '600px',
           }}
         >
-          <Typography
+          {/* <Typography
             fontFamily={playfairDisplay.style.fontFamily}
             fontWeight='700'
             sx={{
@@ -48,7 +60,10 @@ export default function TitleSection() {
             }}
           >
             Kyle Wiskel
-          </Typography>
+          </Typography> */}
+          <AnimatedName setFadeIn={setFadeIn} />
+        </Box>
+        <Fade in={fadeIn} timeout={2000}>
           <Typography
             variant='body1'
             sx={{ color: 'text.primary', alignSelf: 'center', fontWeight: '300', wordWrap: 'break-word' }}
@@ -58,7 +73,9 @@ export default function TitleSection() {
             <b> BSc in Computer Engineering</b> from the University of Alberta, I wear my iron ring as a symbol of pride
             and a reminder to live by a high standard of professional and ethical conduct!
           </Typography>
-        </Box>
+        </Fade>
+      </Box>
+      <Fade in={fadeIn} timeout={2000}>
         <Box
           sx={{
             display: 'flex',
@@ -77,7 +94,6 @@ export default function TitleSection() {
             alignItems: 'center',
           }}
         >
-          {/* <Image src='/profile.png' alt='Profile Picture' width={300} height={atuo} /> */}
           <Image
             src={profile}
             alt='Profile Picture'
@@ -88,7 +104,7 @@ export default function TitleSection() {
             }}
           />
         </Box>
-      </Box>
-    </Fade>
+      </Fade>
+    </Box>
   );
 }
