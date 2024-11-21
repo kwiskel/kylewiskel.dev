@@ -51,6 +51,11 @@ const techIcons: Record<string, Record<string, string>> = {
   Java: { src: '/icons/java.svg', url: 'https://www.java.com/' },
 };
 
+const MotionBox = motion(
+  // eslint-disable-next-line react/display-name
+  forwardRef((props: BoxProps, ref) => <Box ref={ref} {...props} />),
+);
+
 export default function ProjectCard({
   name,
   company,
@@ -64,11 +69,6 @@ export default function ProjectCard({
   reverse = false,
 }: ProjectCardProps) {
   const theme = useTheme();
-
-  const MotionBox = motion(
-    // eslint-disable-next-line react/display-name
-    forwardRef((props: BoxProps, ref) => <Box ref={ref} {...props} />),
-  );
 
   return (
     <Box // Project Card
