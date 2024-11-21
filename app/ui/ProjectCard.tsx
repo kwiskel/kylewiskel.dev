@@ -1,6 +1,8 @@
 import { playfairDisplay } from '@/lib/theme';
-import { Box, Button, IconButton, Typography, useTheme } from '@mui/material';
+import { Box, BoxProps, Button, IconButton, Typography, useTheme } from '@mui/material';
 import Image, { StaticImageData } from 'next/image';
+import { motion } from 'motion/react';
+import { forwardRef } from 'react';
 
 type ProjectCardProps = {
   name: string;
@@ -62,6 +64,12 @@ export default function ProjectCard({
   reverse = false,
 }: ProjectCardProps) {
   const theme = useTheme();
+
+  const MotionBox = motion(
+    // eslint-disable-next-line react/display-name
+    forwardRef((props: BoxProps, ref) => <Box ref={ref} {...props} />),
+  );
+
   return (
     <Box // Project Card
       sx={{
@@ -182,7 +190,7 @@ export default function ProjectCard({
           )}
         </Box>
       </Box>
-      <Box // Project Image
+      <MotionBox
         sx={{
           display: 'flex',
           justifyContent: 'center',
@@ -201,6 +209,8 @@ export default function ProjectCard({
             sm: '60vw',
           },
         }}
+        animate={{ scale: 1, transition: { duration: 0.4 } }} // Duration for leaving hover
+        whileHover={{ scale: 1.2, transition: { duration: 0.4 }, cursor: 'pointer' }}
       >
         <Image
           src={image}
@@ -212,7 +222,7 @@ export default function ProjectCard({
             height: 'auto', // Automatically adjusts height to maintain aspect ratio
           }}
         />
-      </Box>
+      </MotionBox>
     </Box>
   );
 }

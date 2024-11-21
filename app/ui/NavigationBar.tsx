@@ -88,7 +88,7 @@ export default function NavigationBar({ projectRef, workRef, contactRef }: props
             Work Experience
           </NavButton>
           <NavButton startIcon={<ContactMail />} onClick={() => scrollToRef(contactRef)}>
-            Contact
+            Contact Me
           </NavButton>
           <NavButton
             startIcon={<Article />}
