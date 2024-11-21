@@ -19,6 +19,15 @@ export default function NavigationBar({ projectRef, workRef, contactRef }: props
     target?: string;
   };
 
+  // if user scrolls -> close mobile nav
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mobileOpen) setMobileOpen(false);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [mobileOpen]);
+
   const NavButton = styled(Button)<NavButtonProps>(({ theme }) => ({
     padding: '5px 15px',
     margin: '5px 0px 5px 5px',
@@ -35,7 +44,7 @@ export default function NavigationBar({ projectRef, workRef, contactRef }: props
   const [mobileNavPosition, setMobileNavPosition] = useState(200);
   useEffect(() => {
     if (menuButtonRef.current) {
-      setMobileNavPosition(menuButtonRef.current.getBoundingClientRect().bottom);
+      setMobileNavPosition(menuButtonRef.current.getBoundingClientRect().right);
     }
   }, [menuButtonRef.current]);
 
@@ -54,7 +63,12 @@ export default function NavigationBar({ projectRef, workRef, contactRef }: props
       }}
     >
       <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', justifyContent: 'space-between' }}>
-        <IconButton ref={menuButtonRef} color='inherit' edge='start' onClick={() => setMobileOpen(!mobileOpen)}>
+        <IconButton
+          ref={menuButtonRef}
+          edge='start'
+          onClick={() => setMobileOpen(!mobileOpen)}
+          sx={{ color: 'text.main' }}
+        >
           <Menu />
         </IconButton>
         <IconButton onClick={() => changeMode()} sx={{ display: { xs: 'inherit', md: 'none' } }}>
@@ -65,8 +79,8 @@ export default function NavigationBar({ projectRef, workRef, contactRef }: props
         sx={{
           display: { xs: mobileOpen ? 'flex' : 'none', md: 'flex' },
           position: { xs: 'fixed', md: 'inherit' }, // Use 'fixed' to overlay the box on mobile
-          top: { xs: mobileNavPosition, md: null },
-          left: { xs: 0, md: null },
+          top: { xs: 0, md: 0 },
+          left: { md: 0, xs: mobileNavPosition },
           transition: 'opacity 0.5s ease',
           width: { xs: 'fit-content', md: '100%' },
           justifyContent: 'center',
@@ -81,13 +95,25 @@ export default function NavigationBar({ projectRef, workRef, contactRef }: props
             flexDirection: { xs: 'column', md: 'row' },
           }}
         >
-          <NavButton startIcon={<DesignServices />} onClick={() => scrollToRef(projectRef)}>
+          <NavButton
+            startIcon={<DesignServices />}
+            sx={{ justifyContent: { xs: 'start', md: 'inherit' } }}
+            onClick={() => scrollToRef(projectRef)}
+          >
             Projects
           </NavButton>
-          <NavButton startIcon={<Work />} onClick={() => scrollToRef(workRef)}>
+          <NavButton
+            startIcon={<Work />}
+            sx={{ justifyContent: { xs: 'start', md: 'inherit' } }}
+            onClick={() => scrollToRef(workRef)}
+          >
             Work Experience
           </NavButton>
-          <NavButton startIcon={<ContactMail />} onClick={() => scrollToRef(contactRef)}>
+          <NavButton
+            startIcon={<ContactMail />}
+            sx={{ justifyContent: { xs: 'start', md: 'inherit' } }}
+            onClick={() => scrollToRef(contactRef)}
+          >
             Contact Me
           </NavButton>
           <NavButton
@@ -96,7 +122,7 @@ export default function NavigationBar({ projectRef, workRef, contactRef }: props
             href='https://kylewiskel.s3.us-east-2.amazonaws.com/KyleWiskel_Resume.pdf'
             rel='noopener noreferrer'
             target='_blank'
-            sx={{ margin: '5px 5px 5px 5px' }}
+            sx={{ margin: '5px 5px 5px 5px', justifyContent: { xs: 'start', md: 'inherit' } }}
           >
             Resume
           </NavButton>
