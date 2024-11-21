@@ -28,7 +28,7 @@ export default function ClientThemeProvider({
             backgroundColor: theme.palette.background.default,
             backgroundImage:
               theme.palette.mode === 'dark'
-                ? 'radial-gradient(circle, #ffffff26 1px, transparent 1px)'
+                ? 'radial-gradient(circle,rgba(255, 255, 255, 0.20) 1px, transparent 1px)'
                 : 'radial-gradient(circle, #12121226 1px, transparent 1px)',
             backgroundSize: '40px 40px' /* Adjust for dot spacing */,
           }}
