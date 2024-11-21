@@ -1,11 +1,11 @@
 'use client';
-import { Box, Collapse, Fade, useTheme } from '@mui/material';
+import { Box, Collapse, Fade, useMediaQuery, useTheme } from '@mui/material';
 import NavigationBar from './ui/NavigationBar';
 import TitleSection from './ui/TitleSection';
 import ProjectsSection from './ui/ProjectsSection';
 import ContactSection from './ui/ContactSection';
 import WorkSection from './ui/WorkSection';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ExpandMore } from '@mui/icons-material';
 
 export default function Page() {
@@ -23,6 +23,11 @@ export default function Page() {
       setShowMore(true);
     }
   };
+
+  const isLargerThanMd = useMediaQuery(theme.breakpoints.up('md'));
+  useEffect(() => {
+    setShowMore(!isLargerThanMd);
+  }, [isLargerThanMd]);
 
   return (
     <>
