@@ -1,6 +1,6 @@
 'use client';
 import { Article, ContactMail, DarkMode, DesignServices, LightMode, Menu, Work } from '@mui/icons-material';
-import { Box, Button, ButtonProps, IconButton, styled, Toolbar, useRadioGroup, useTheme } from '@mui/material';
+import { Box, Button, ButtonProps, Fade, IconButton, styled, Toolbar, useRadioGroup, useTheme } from '@mui/material';
 import { RefObject, useContext, useEffect, useRef, useState } from 'react';
 import { ThemeContext } from './ClientThemeProvider';
 
@@ -8,9 +8,10 @@ type props = {
   projectRef: RefObject<HTMLDivElement>;
   workRef: RefObject<HTMLDivElement>;
   contactRef: RefObject<HTMLDivElement>;
+  fadeIn: boolean;
 };
 
-export default function NavigationBar({ projectRef, workRef, contactRef }: props) {
+export default function NavigationBar({ projectRef, workRef, contactRef, fadeIn }: props) {
   const theme = useTheme();
   const { changeMode } = useContext(ThemeContext); // Access the theme state and function
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -55,82 +56,84 @@ export default function NavigationBar({ projectRef, workRef, contactRef }: props
   };
 
   return (
-    <Toolbar
-      sx={{
-        width: '100%',
-        display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' },
-      }}
-    >
-      <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', justifyContent: 'space-between' }}>
-        <IconButton
-          ref={menuButtonRef}
-          edge='start'
-          onClick={() => setMobileOpen(!mobileOpen)}
-          sx={{ color: 'text.main' }}
-        >
-          <Menu />
-        </IconButton>
-        <IconButton onClick={() => changeMode()} sx={{ display: { xs: 'inherit', md: 'none' } }}>
-          {theme.palette.mode === 'dark' ? <LightMode /> : <DarkMode />}
-        </IconButton>
-      </Box>
-      <Box
+    <Fade in={fadeIn} timeout={2000}>
+      <Toolbar
         sx={{
-          display: { xs: mobileOpen ? 'flex' : 'none', md: 'flex' },
-          position: { xs: 'fixed', md: 'inherit' }, // Use 'fixed' to overlay the box on mobile
-          top: { xs: 0, md: 0 },
-          left: { md: 0, xs: mobileNavPosition },
-          transition: 'opacity 0.5s ease',
-          width: { xs: 'fit-content', md: '100%' },
-          justifyContent: 'center',
+          width: '100%',
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
         }}
       >
+        <Box sx={{ display: { xs: 'flex', md: 'none' }, width: '100%', justifyContent: 'space-between' }}>
+          <IconButton
+            ref={menuButtonRef}
+            edge='start'
+            onClick={() => setMobileOpen(!mobileOpen)}
+            sx={{ color: 'text.main' }}
+          >
+            <Menu />
+          </IconButton>
+          <IconButton onClick={() => changeMode()} sx={{ display: { xs: 'inherit', md: 'none' } }}>
+            {theme.palette.mode === 'dark' ? <LightMode /> : <DarkMode />}
+          </IconButton>
+        </Box>
         <Box
           sx={{
-            display: 'flex',
-            border: mobileOpen ? 'none' : `1px solid ${theme.palette.text.primary}`,
-            width: 'fit-content',
-            borderRadius: '20px',
-            flexDirection: { xs: 'column', md: 'row' },
+            display: { xs: mobileOpen ? 'flex' : 'none', md: 'flex' },
+            position: { xs: 'fixed', md: 'inherit' }, // Use 'fixed' to overlay the box on mobile
+            top: { xs: 0, md: 0 },
+            left: { md: 0, xs: mobileNavPosition },
+            transition: 'opacity 0.5s ease',
+            width: { xs: 'fit-content', md: '100%' },
+            justifyContent: 'center',
           }}
         >
-          <NavButton
-            startIcon={<DesignServices />}
-            sx={{ justifyContent: { xs: 'start', md: 'inherit' } }}
-            onClick={() => scrollToRef(projectRef)}
+          <Box
+            sx={{
+              display: 'flex',
+              border: mobileOpen ? 'none' : `1px solid ${theme.palette.text.primary}`,
+              width: 'fit-content',
+              borderRadius: '20px',
+              flexDirection: { xs: 'column', md: 'row' },
+            }}
           >
-            Projects
-          </NavButton>
-          <NavButton
-            startIcon={<Work />}
-            sx={{ justifyContent: { xs: 'start', md: 'inherit' } }}
-            onClick={() => scrollToRef(workRef)}
-          >
-            Work Experience
-          </NavButton>
-          <NavButton
-            startIcon={<ContactMail />}
-            sx={{ justifyContent: { xs: 'start', md: 'inherit' } }}
-            onClick={() => scrollToRef(contactRef)}
-          >
-            Contact Me
-          </NavButton>
-          <NavButton
-            startIcon={<Article />}
-            component='a'
-            href='https://kylewiskel.s3.us-east-2.amazonaws.com/KyleWiskel_Resume.pdf'
-            rel='noopener noreferrer'
-            target='_blank'
-            sx={{ margin: '5px 5px 5px 5px', justifyContent: { xs: 'start', md: 'inherit' } }}
-          >
-            Resume
-          </NavButton>
+            <NavButton
+              startIcon={<DesignServices />}
+              sx={{ justifyContent: { xs: 'start', md: 'inherit' } }}
+              onClick={() => scrollToRef(projectRef)}
+            >
+              Projects
+            </NavButton>
+            <NavButton
+              startIcon={<Work />}
+              sx={{ justifyContent: { xs: 'start', md: 'inherit' } }}
+              onClick={() => scrollToRef(workRef)}
+            >
+              Work Experience
+            </NavButton>
+            <NavButton
+              startIcon={<ContactMail />}
+              sx={{ justifyContent: { xs: 'start', md: 'inherit' } }}
+              onClick={() => scrollToRef(contactRef)}
+            >
+              Contact Me
+            </NavButton>
+            <NavButton
+              startIcon={<Article />}
+              component='a'
+              href='https://kylewiskel.s3.us-east-2.amazonaws.com/KyleWiskel_Resume.pdf'
+              rel='noopener noreferrer'
+              target='_blank'
+              sx={{ margin: '5px 5px 5px 5px', justifyContent: { xs: 'start', md: 'inherit' } }}
+            >
+              Resume
+            </NavButton>
+          </Box>
         </Box>
-      </Box>
-      <IconButton onClick={() => changeMode()} sx={{ display: { xs: 'none', md: 'inherit' } }}>
-        {theme.palette.mode === 'dark' ? <LightMode /> : <DarkMode />}
-      </IconButton>
-    </Toolbar>
+        <IconButton onClick={() => changeMode()} sx={{ display: { xs: 'none', md: 'inherit' } }}>
+          {theme.palette.mode === 'dark' ? <LightMode /> : <DarkMode />}
+        </IconButton>
+      </Toolbar>
+    </Fade>
   );
 }

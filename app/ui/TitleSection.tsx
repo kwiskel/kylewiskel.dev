@@ -1,12 +1,15 @@
-import { Box, Fade, Typography } from '@mui/material';
+import { Box, Fade } from '@mui/material';
 import Image from 'next/image';
 import profile from '../../public/profile.png';
 import AnimatedName from './AnimatedName';
-import { useState } from 'react';
+import AnimatedText from './AnimatedText';
 
-export default function TitleSection() {
-  const [fadeIn, setFadeIn] = useState(false);
+type props = {
+  fadeIn: boolean;
+  setFadeIn: (value: boolean) => void;
+};
 
+export default function TitleSection({ fadeIn, setFadeIn }: props) {
   return (
     <Box
       sx={{
@@ -63,8 +66,24 @@ export default function TitleSection() {
           </Typography> */}
           <AnimatedName setFadeIn={setFadeIn} />
         </Box>
-        <Fade in={fadeIn} timeout={2000}>
-          <Typography
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+          }}
+        >
+          <AnimatedText
+            text="Hello! I'm Kyle Wiskel, a <b>Full</b> <b>Stack</b> <b>Developer</b>, a half marathon runner (Edmonton Marathon 2024),
+            an animal shelter volunteer, a baker, and a travel lover (last stops: Iceland, Hawaii)."
+          />
+        </Box>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', mt: '20px' }}>
+          <AnimatedText
+            text='With a <b>BSc</b> <b>in</b> <b>Computer</b> <b>Engineering</b> from the University of Alberta, I wear my iron ring as a symbol of pride
+            and a reminder to live by a high standard of professional and ethical conduct!'
+          />
+        </Box>
+        {/* <Typography
             variant='body1'
             sx={{ color: 'text.primary', alignSelf: 'center', fontWeight: '300', wordWrap: 'break-word' }}
           >
@@ -72,8 +91,7 @@ export default function TitleSection() {
             an animal shelter volunteer, a baker, and a travel lover (last stops: Iceland, Hawaii). <br /> <br /> With a
             <b> BSc in Computer Engineering</b> from the University of Alberta, I wear my iron ring as a symbol of pride
             and a reminder to live by a high standard of professional and ethical conduct!
-          </Typography>
-        </Fade>
+          </Typography> */}
       </Box>
       <Fade in={fadeIn} timeout={2000}>
         <Box
