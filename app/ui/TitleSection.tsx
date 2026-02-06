@@ -73,25 +73,17 @@ export default function TitleSection({ fadeIn, setFadeIn }: props) {
           }}
         >
           <AnimatedText
-            text="Hello! I'm Kyle Wiskel, a <b>Full</b> <b>Stack</b> <b>Developer</b>, a half marathon runner (Edmonton Marathon 2024),
-            an animal shelter volunteer, a baker, and a travel lover (last stops: Iceland, Hawaii)."
+            text="Hello! I'm Kyle Wiskel, a <b>Full</b> <b>Stack</b> <b>Developer</b>, a half marathon runner (2025 highlights: Vancouver, Banff, & Edmonton),
+             a skier, an avid tent camper, and a travel lover (last stops Japan, Iceland)."
+            
           />
         </Box>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', mt: '20px' }}>
           <AnimatedText
-            text='With a <b>BSc</b> <b>in</b> <b>Computer</b> <b>Engineering</b> from the University of Alberta, I wear my iron ring as a symbol of pride
-            and a reminder to live by a high standard of professional and ethical conduct!'
+            text='I have a <b>BSc</b> <b>in</b> <b>Computer</b> <b>Engineering</b> from the University of Alberta
+             and 3 years of professional software development experience!'
           />
         </Box>
-        {/* <Typography
-            variant='body1'
-            sx={{ color: 'text.primary', alignSelf: 'center', fontWeight: '300', wordWrap: 'break-word' }}
-          >
-            Hello! I&apos;m Kyle Wiskel, a<b> Full Stack Developer</b>, a half marathon runner (Edmonton Marathon 2024),
-            an animal shelter volunteer, a baker, and a travel lover (last stops: Iceland, Hawaii). <br /> <br /> With a
-            <b> BSc in Computer Engineering</b> from the University of Alberta, I wear my iron ring as a symbol of pride
-            and a reminder to live by a high standard of professional and ethical conduct!
-          </Typography> */}
       </Box>
       <Fade in={fadeIn} timeout={2000}>
         <Box
