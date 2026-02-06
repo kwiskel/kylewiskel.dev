@@ -9,8 +9,8 @@ type ProjectCardProps = {
   company?: string;
   date?: string;
   location?: string;
-  description: string;
-  image: StaticImageData;
+  description: string | string[];
+  image?: StaticImageData;
   technologies?: string[];
   githubLink?: string;
   projectLink?: string;
@@ -20,6 +20,7 @@ type ProjectCardProps = {
 const techIcons: Record<string, Record<string, string>> = {
   'Next.js': { dark: '/icons/next-js-darkmode.svg', light: '/icons/next-js-lightmode.svg', url: 'https://nextjs.org/' },
   React: { src: '/icons/react.svg', url: 'https://react.dev/' },
+  Angular: {src: '/icons/angular.svg', url: 'https://angular.dev/' },
   TypeScript: { src: '/icons/typescript.svg', url: 'https://www.typescriptlang.org/' },
   JavaScript: { src: '/icons/javascript.svg', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
   'Material UI': { src: '/icons/materialui.svg', url: 'https://mui.com/material-ui/' },
@@ -70,6 +71,8 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const theme = useTheme();
 
+  const descriptionItems = Array.isArray(description) ? description : [description];
+
   return (
     <Box // Project Card
       sx={{
@@ -116,12 +119,35 @@ export default function ProjectCard({
             {company}, {location} | {date}
           </Typography>
         )}
-        <Typography // Project Description
-          variant='body1'
-          sx={{ color: 'text.secondary', wordWrap: 'break-word' }}
-        >
-          {description}
-        </Typography>
+        {descriptionItems.length === 1 ? (
+          <Typography // Single paragraph description
+            variant='body1'
+            sx={{ color: 'text.secondary', wordWrap: 'break-word' }}
+          >
+            {descriptionItems[0]}
+          </Typography>
+        ) : (
+          <Box // Bullet point description
+            component='ul'
+            sx={{
+              color: 'text.secondary',
+              margin: 0,
+              paddingLeft: '20px',
+              listStyleType: 'disc',
+            }}
+          >
+            {descriptionItems.map((item, index) => (
+              <Typography
+                key={index}
+                component='li'
+                variant='body1'
+                sx={{ color: 'text.secondary', wordWrap: 'break-word', marginBottom: '6px' }}
+              >
+                {item.trim()}
+              </Typography>
+            ))}
+          </Box>
+        )}
         <Box // Technologies
           sx={{
             display: 'flex',
@@ -212,6 +238,7 @@ export default function ProjectCard({
         animate={{ scale: 1, transition: { duration: 0.4 } }} // Duration for leaving hover
         whileHover={{ scale: 1.2, transition: { duration: 0.4 }, cursor: 'pointer' }}
       >
+        {image && (
         <Image
           src={image}
           alt='Project Image'
@@ -222,6 +249,7 @@ export default function ProjectCard({
             height: 'auto', // Automatically adjusts height to maintain aspect ratio
           }}
         />
+        )}
       </MotionBox>
     </Box>
   );
