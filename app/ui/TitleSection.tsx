@@ -49,21 +49,6 @@ export default function TitleSection({ fadeIn, setFadeIn }: props) {
             },
           }}
         >
-          {/* <Typography
-            fontFamily={playfairDisplay.style.fontFamily}
-            fontWeight='700'
-            sx={{
-              color: 'text.primary',
-              margin: '0px 0px 25px 0px',
-              alignSelf: {
-                xs: 'center',
-                lg: 'start',
-              },
-              fontSize: { xs: '3.5em', sm: '4em', lg: '5em' },
-            }}
-          >
-            Kyle Wiskel
-          </Typography> */}
           <AnimatedName setFadeIn={setFadeIn} />
         </Box>
         <Box
@@ -74,14 +59,13 @@ export default function TitleSection({ fadeIn, setFadeIn }: props) {
         >
           <AnimatedText
             text="Hello! I'm Kyle Wiskel, a <b>Full</b> <b>Stack</b> <b>Developer</b>, a half marathon runner (2025 highlights: Vancouver, Banff, & Edmonton),
-             a skier, an avid tent camper, and a travel lover (last stops Japan, Iceland)."
-            
+            a skier, an avid tent camper, and a travel lover (last stops Japan, Iceland)."
           />
         </Box>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', mt: '20px' }}>
           <AnimatedText
             text='I have a <b>BSc</b> <b>in</b> <b>Computer</b> <b>Engineering</b> from the University of Alberta
-             and 3 years of professional software development experience!'
+            and 3 years of professional software development experience!'
           />
         </Box>
       </Box>
