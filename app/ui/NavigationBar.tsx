@@ -1,6 +1,6 @@
 'use client';
 import { Article, ContactMail, DarkMode, DesignServices, LightMode, Menu, Work } from '@mui/icons-material';
-import { Box, Button, ButtonProps, Fade, IconButton, styled, Toolbar, useRadioGroup, useTheme } from '@mui/material';
+import { Box, Button, ButtonProps, Fade, IconButton, styled, Toolbar, useTheme } from '@mui/material';
 import { RefObject, useContext, useEffect, useRef, useState } from 'react';
 import { ThemeContext } from './ClientThemeProvider';
 
@@ -47,7 +47,7 @@ export default function NavigationBar({ projectRef, workRef, contactRef, fadeIn 
     if (menuButtonRef.current) {
       setMobileNavPosition(menuButtonRef.current.getBoundingClientRect().right);
     }
-  }, [menuButtonRef.current]);
+  }, []);
 
   const scrollToRef = (ref: RefObject<HTMLDivElement>) => {
     // if mobile -> close bar

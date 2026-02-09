@@ -20,7 +20,7 @@ type ProjectCardProps = {
 const techIcons: Record<string, Record<string, string>> = {
   'Next.js': { dark: '/icons/next-js-darkmode.svg', light: '/icons/next-js-lightmode.svg', url: 'https://nextjs.org/' },
   React: { src: '/icons/react.svg', url: 'https://react.dev/' },
-  Angular: {src: '/icons/angular.svg', url: 'https://angular.dev/' },
+  Angular: { src: '/icons/angular.svg', url: 'https://angular.dev/' },
   TypeScript: { src: '/icons/typescript.svg', url: 'https://www.typescriptlang.org/' },
   JavaScript: { src: '/icons/javascript.svg', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
   'Material UI': { src: '/icons/materialui.svg', url: 'https://mui.com/material-ui/' },
@@ -239,16 +239,16 @@ export default function ProjectCard({
         whileHover={{ scale: 1.2, transition: { duration: 0.4 }, cursor: 'pointer' }}
       >
         {image && (
-        <Image
-          src={image}
-          alt='Project Image'
-          loading='lazy'
-          sizes='(max-width: 900px) 50vw, (max-width: 1200px) 50vw, 50vw'
-          style={{
-            width: '100%',
-            height: 'auto', // Automatically adjusts height to maintain aspect ratio
-          }}
-        />
+          <Image
+            src={image}
+            alt='Project Image'
+            loading='lazy'
+            sizes='(max-width: 900px) 50vw, (max-width: 1200px) 50vw, 50vw'
+            style={{
+              width: '100%',
+              height: 'auto', // Automatically adjusts height to maintain aspect ratio
+            }}
+          />
         )}
       </MotionBox>
     </Box>

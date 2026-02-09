@@ -45,8 +45,7 @@ export default function WorkSection({ ref }: props) {
         ]}
         // image={racMockup}
         // technologies={['Angular', 'Typescript', 'Python', 'Tailwind CSS', 'PostgreSQL']}
-        technologies={[ 'Angular', 'TypeScript', 'Python', 'CSS']}
-
+        technologies={['Angular', 'TypeScript', 'Python', 'CSS']}
         githubLink=''
         projectLink='https://www.praedico.ca/'
       />
@@ -80,7 +79,6 @@ export default function WorkSection({ ref }: props) {
         technologies={['React', 'TypeScript', 'Material UI', 'CSS', 'Django', 'Python']}
         githubLink=''
         projectLink='https://mecsimcalc.com/'
-
       />
       <ProjectCard
         name='Full Stack Developer'
