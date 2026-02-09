@@ -71,7 +71,7 @@ export default function ContactSection({ ref }: props) {
         rel='noopener noreferrer'
         target='_blank'
       >
-        @ 2024 Kyle Wiskel
+        @ 2026 Kyle Wiskel
       </Typography>
     </Box>
   );
