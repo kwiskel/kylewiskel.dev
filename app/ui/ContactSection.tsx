@@ -2,7 +2,7 @@ import { Email, GitHub, LinkedIn } from '@mui/icons-material';
 import { Box, IconButton, Typography } from '@mui/material';
 import { RefObject } from 'react';
 type props = {
-  ref: RefObject<HTMLDivElement>;
+  ref: RefObject<HTMLDivElement | null>;
 };
 
 export default function ContactSection({ ref }: props) {

@@ -7,7 +7,7 @@ import mealrMockup from '../../public/projects/mealr-mockup.png';
 import { RefObject } from 'react';
 
 type props = {
-  ref: RefObject<HTMLDivElement>;
+  ref: RefObject<HTMLDivElement | null>;
 };
 
 export default function ProjectsSection({ ref }: props) {

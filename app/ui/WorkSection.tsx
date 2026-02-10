@@ -5,7 +5,7 @@ import racMockup from '../../public/work/rac-mockup.png';
 import { RefObject } from 'react';
 
 type props = {
-  ref: RefObject<HTMLDivElement>;
+  ref: RefObject<HTMLDivElement | null>;
 };
 
 export default function WorkSection({ ref }: props) {

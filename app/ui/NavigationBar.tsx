@@ -5,9 +5,9 @@ import { RefObject, useContext, useEffect, useRef, useState } from 'react';
 import { ThemeContext } from './ClientThemeProvider';
 
 type props = {
-  projectRef: RefObject<HTMLDivElement>;
-  workRef: RefObject<HTMLDivElement>;
-  contactRef: RefObject<HTMLDivElement>;
+  projectRef: RefObject<HTMLDivElement | null>;
+  workRef: RefObject<HTMLDivElement | null>;
+  contactRef: RefObject<HTMLDivElement | null>;
   fadeIn: boolean;
 };
 
@@ -49,7 +49,7 @@ export default function NavigationBar({ projectRef, workRef, contactRef, fadeIn 
     }
   }, []);
 
-  const scrollToRef = (ref: RefObject<HTMLDivElement>) => {
+  const scrollToRef = (ref: RefObject<HTMLDivElement | null>) => {
     // if mobile -> close bar
     if (mobileOpen) setMobileOpen(false);
     ref.current?.scrollIntoView({ behavior: 'smooth' });
